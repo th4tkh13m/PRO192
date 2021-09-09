@@ -26,7 +26,7 @@ public class Student {
             this.takingFinalExam();
         }
     }
-    
+
     public String toString() {
         return "Student{" + "name=" + name + ", gpa=" + gpa + '}';
     }
