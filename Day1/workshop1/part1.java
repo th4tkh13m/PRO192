@@ -26,12 +26,38 @@ public class part1 {
         System.out.println("Inputted matrix: ");
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
+                System.out.print("m[" + i + "][" + j + "] = ");
                 System.out.format("%.2f", matrix[i][j]);
-                System.out.print("  ");
+                System.out.println("");
             }
-            System.out.println("");
         }
-        
+
         input.close();
+
+        System.out.println("Sum of matrix = " + sum(matrix));
+        System.out.println("Average of the matrix = " + average(matrix));
+    }
+
+    public static double sum(double[][] matrix) {
+        int cols = matrix[0].length;
+        int rows = matrix.length;
+        double sum = 0;
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                sum = sum + matrix[i][j];
+            }
+        }
+
+        return sum;
+    }
+
+    public static double average(double[][] matrix) {
+        int cols = matrix[0].length;
+        int rows = matrix.length;
+        double average;
+
+        average = sum(matrix) / (cols * rows);
+        return average;
     }
 }
