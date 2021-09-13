@@ -17,7 +17,7 @@ public class part3 {
             System.out.println("Enter the " + i + "th student's name:");
             sName[i] = input.nextLine();
             sName[i] = sName[i].substring(0,1).toUpperCase() 
-                        + sName[i].substring(1);
+                        + sName[i].substring(1).toLowerCase();
         }
 
         System.out.println("\nThe formatted names: ");
