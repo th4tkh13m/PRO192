@@ -5,7 +5,7 @@ public class Student {
     private String sName;
     private String address;
     private int numCourse = 0;
-    private Course[] courses;
+    private Course[] courses = new Course[100];
 
     public Student(String sName, String address) {
         this.sName = sName;
