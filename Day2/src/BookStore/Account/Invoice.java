@@ -36,6 +36,4 @@ public class Invoice {
         this.amount = this.getAmount() * (1 - this.getCustomer().getDiscount() / 100);
         return this.getAmount();
     }
-    
-    
 }
