@@ -7,6 +7,9 @@ public class Car {
     private boolean convertible;
     private boolean parkingBrake;
 
+    public Car() {
+    }
+
     public Car(String color, int enginePower, boolean convertible, boolean parkingBrake) {
         this.color = color;
         this.enginePower = enginePower;
