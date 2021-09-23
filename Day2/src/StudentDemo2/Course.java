@@ -1,18 +1,19 @@
 package StudentDemo2;
 
 public class Course {
-   
-    
 
     private String cName;
-    private int grade;
+    private double grade;
 
-    public Course(String cName, int grade) {
+    public Course() {
+    }
+
+    public Course(String cName, double grade) {
         this.cName = cName;
         this.grade = grade;
     }
 
-    public int getGrade() {
+    public double getGrade() {
         return grade;
     }
 

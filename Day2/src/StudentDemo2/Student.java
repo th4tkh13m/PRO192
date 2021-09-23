@@ -1,32 +1,50 @@
 package StudentDemo2;
 
+import java.util.Scanner;
+
 public class Student {
 
+    public static Scanner in = new Scanner(System.in);
     private String sName;
-    private String address;
+    private String sID;
     private int numCourse = 0;
-    private Course[] courses = new Course[100];
+    private Course[] courses;
 
-    public Student(String sName, String address) {
+    public Student(String sName, String sID) {
         this.sName = sName;
-        this.address = address;
+        this.sID = sID;
     }
 
-    public String getsName() {
-        return sName;
+    public Student(String sName, String sID, int numCourse, Course[] courses) {
+        this.sName = sName;
+        this.sID = sID;
+        this.numCourse = numCourse;
+        this.courses = courses;
     }
 
-    public String getAddress() {
-        return address;
+    public int getNumCourse() {
+        return numCourse;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setNumCourse(int numCourse) {
+        this.numCourse = numCourse;
     }
 
-    public void addCourseGrade(Course course) {
-        this.courses[numCourse] = course;
-        this.numCourse = this.numCourse + 1;
+    public void addCourseGrade() {
+        String cName;
+        double grade;
+        this.courses = new Course[numCourse];
+        System.out.println("Please enter the information of the courses: ");
+        for (int i = 0; i < numCourse; i++) {
+            System.out.print("Enter course name: ");
+            cName = Student.in.nextLine();
+            System.out.print("Enter grade: ");
+            grade = Student.in.nextDouble();
+            Student.in.nextLine();
+            Course tempCourse = new Course(cName, grade);
+            courses[i] = tempCourse;
+        }
+
     } 
 
     public void printGrade() {
@@ -37,7 +55,7 @@ public class Student {
     }
 
     public double getAverageGrade() {
-        int sum = 0;
+        double sum = 0;
         for (int i = 0; i < this.numCourse; i++) {
             sum = sum + this.courses[i].getGrade();
         }
@@ -46,7 +64,7 @@ public class Student {
 
     @Override
     public String toString() {
-        return sName + "(" + address + ")";
+        return sName + "(" + sID + ")";
     }
 
     
