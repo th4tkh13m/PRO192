@@ -19,7 +19,7 @@ public class Part2 {
                 cont = false;
                 sc.close();
             } catch (Exception e) {
-                //TODO: handle exception
+                
                 System.out.println("The string is invalid");
                 cont = true;
             }
