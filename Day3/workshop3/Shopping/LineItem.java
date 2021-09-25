@@ -15,11 +15,11 @@ public class LineItem {
         this.qty = qty;
     }
 
-    public LineItem addLineItem() {
-        Scanner sc = new Scanner(System.in);
-        String pName;
+    // public LineItem addLineItem() {
+    //     Scanner sc = new Scanner(System.in);
+    //     String pName;
         
-    }
+    // }
 
     public double getTotal() {
         double totalPrice;
