@@ -1,9 +1,6 @@
 package workshop3.Shopping;
 
-import java.util.Scanner;
-
 public class LineItem {
-
     private Product product;
     private int qty;
 
@@ -15,16 +12,26 @@ public class LineItem {
         this.qty = qty;
     }
 
-    // public LineItem addLineItem() {
-    //     Scanner sc = new Scanner(System.in);
-    //     String pName;
-        
-    // }
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setQty(int qty) {
+        this.qty = qty;
+    }
+
+    public int getQty() {
+        return qty;
+    }
 
     public double getTotal() {
         double totalPrice;
-        totalPrice = product.getPrice() * this.qty;
+        totalPrice = this.getProduct().getPrice() * this.getQty();
         return totalPrice;
-    }    
+    }
 
 }
