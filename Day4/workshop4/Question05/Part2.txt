@@ -7,9 +7,16 @@ Explain step by step what happened when the program runs and answer some questio
 - What is the error thrown when you cast it wrong?
 - What methods can you call if you don’t cast the item variable?
 
-The only object declared in the program is item.
+
+The item variable is stored at dynamic heap. The objects are stored at heap.
+Objects: Item, Vase, Statue, Painting.
 The item variable storing null value.
 Because the currently type of item is `Item`
+The following error:
+"Exception in thread "main" java.lang.Error: Unresolved compilation problem: 
+        The method inputVase() is undefined for the type Painting
+
+        at workshop4.Question05.AntiqueShop.main(AntiqueShop.java:22)"
 Methods can be called without casting:
 - getValue
 - setValue
