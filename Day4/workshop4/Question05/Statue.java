@@ -30,6 +30,7 @@ public class Statue extends Item{
     }
 
     public void inputStatue() {
+        input();
         Scanner sc = new Scanner(System.in);
         System.out.println("Input Color: " + color);
         color = sc.nextLine();

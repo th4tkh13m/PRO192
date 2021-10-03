@@ -40,7 +40,7 @@ public class Painting extends Item{
     public void setFrame(boolean isFrame) {
         this.isFrame = isFrame;
     }
-    public void outputPaiting() {
+    public void outputPainting() {
         System.out.println("Height: " + height);
         System.out.println("Width: " + width);
         System.out.println("isWaterColor: "+isWaterColor);
@@ -48,6 +48,7 @@ public class Painting extends Item{
     }
 
     public void inputPainting() {
+        input();
         Scanner sc = new Scanner(System.in);
         System.out.println("Input Height: " + height);
         height = sc.nextInt();

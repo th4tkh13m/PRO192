@@ -37,9 +37,12 @@ public class Vase extends Item {
     }
 
     public void inputVase() {
+        input();
         Scanner sc = new Scanner(System.in);
-        System.out.println("Input Material: " + material);
-        System.out.println("Input Height: " + height);
+        System.out.println("Input Material: ");
+        material = sc.nextLine();
+        System.out.println("Input Height: ");
+        height = sc.nextInt();
         sc.close();
     }
 }

@@ -29,7 +29,7 @@ public class Item {
         creator = sc.nextLine();
         System.out.println("Enter value:");
         value = sc.nextInt();
-        sc.close();
+        // sc.close();
     }
     public void output() {
         System.out.println("Creator: "+ creator);
