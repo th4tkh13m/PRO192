@@ -25,6 +25,7 @@ public class Statue extends Item{
         this.color = color;
     }
     public void outputStatue() {
+        output();
         System.out.println("Color: " + color);
         System.out.println("Weight: " + weight);
     }
@@ -36,6 +37,6 @@ public class Statue extends Item{
         color = sc.nextLine();
         System.out.println("Input Weight: " + weight);
         weight = sc.nextInt();
-        sc.close();
+        // sc.close();
     }
 }

@@ -41,6 +41,7 @@ public class Painting extends Item{
         this.isFrame = isFrame;
     }
     public void outputPainting() {
+        output();
         System.out.println("Height: " + height);
         System.out.println("Width: " + width);
         System.out.println("isWaterColor: "+isWaterColor);
@@ -60,6 +61,6 @@ public class Painting extends Item{
         isWaterColor = sc.nextBoolean();
         System.out.println("Input isFrame: " + isFrame);
         isFrame = sc.nextBoolean();
-        sc.close();
+        // sc.close();
     }
 }

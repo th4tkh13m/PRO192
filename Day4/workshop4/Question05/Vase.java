@@ -32,6 +32,7 @@ public class Vase extends Item {
     }
 
     public void outputVase() {
+        output();
         System.out.println("Material: " + material);
         System.out.println("Height: " + height);
     }
@@ -43,6 +44,6 @@ public class Vase extends Item {
         material = sc.nextLine();
         System.out.println("Input Height: ");
         height = sc.nextInt();
-        sc.close();
+        // sc.close();
     }
 }
