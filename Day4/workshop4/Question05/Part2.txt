@@ -1,0 +1,19 @@
+Part 2: Draw the memory map when the program runs [3 points]
+Explain step by step what happened when the program runs and answer some questions.
+- What is stored in the static heap, stack, dynamic heap?
+- What are objects in the program?
+- What is the item variable storing?
+- Why must you cast to call the method inputVase()/outputVase()?
+- What is the error thrown when you cast it wrong?
+- What methods can you call if you don’t cast the item variable?
+
+The only object declared in the program is item.
+The item variable storing null value.
+Because the currently type of item is `Item`
+Methods can be called without casting:
+- getValue
+- setValue
+- getCreator
+- setCreator
+- input
+- output
