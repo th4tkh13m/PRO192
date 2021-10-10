@@ -1,0 +1,8 @@
+Explain step by step what happened when the program runs and answer some questions.
+- What is stored in the static heap, stack, dynamic heap?
+- Why the Organization class is abstract?
+- Why must the Colony/University class implement the communicateBytool() method?
+- You explain the polymorphism feature in your code.
+- Describe the difference between an interface and an abstract class.
+
+The Organization class is abstract because there 
