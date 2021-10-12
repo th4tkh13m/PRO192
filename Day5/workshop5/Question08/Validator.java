@@ -2,12 +2,9 @@ package workshop5.Question08;
 
 import java.util.Scanner;
 
-/**
- * Validator
- */
 public class Validator {
 
-	public static String geString(Scanner sc, String prompt) {
+	public static String getString(Scanner sc, String prompt) {
 		System.out.println(prompt);
 		String s = sc.next();
 		sc.nextLine();
