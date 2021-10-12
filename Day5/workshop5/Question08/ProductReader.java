@@ -6,5 +6,6 @@ package workshop5.Question08;
 public interface ProductReader {
 
 	Product getProduct(String code);
+
 	String getProductsString();
-}	
+}
