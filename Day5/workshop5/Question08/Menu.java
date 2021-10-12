@@ -3,7 +3,7 @@ package workshop5.Question08;
 import java.util.Scanner;
 public class Menu {
 
-	private ProductDAO productDAO = null;
+	private ProductDAO productDAO = new Storage();
 	private Scanner sc = new Scanner(System.in);
 	public Menu() {
 	}
@@ -24,6 +24,9 @@ public class Menu {
 	public void addProduct() {
 		String code = Validator.getString(sc, "Enter product code");
 		String description = Validator.getLine(sc, "Enter description");
+		double price = Validator.getDouble(sc, "Enter Price:");
+		Product p = new Product(code, description, price);
+		productDAO.addProduct(p);
 	}
 
 	public void deleteProduct() {

@@ -2,9 +2,6 @@ package workshop5.Question08;
 
 import java.util.ArrayList;
 
-import workshop5.Question08.Product;
-import workshop5.Question08.ProductDAO;
-
 /**
  * Storage
  */
@@ -16,7 +13,8 @@ public class Storage implements ProductDAO {
 		products = new ArrayList<Product>();
 	}
 
-	public Product geProduct(String code) {
+	// @Override
+	public Product getProduct(String code) {
 		Product p = null;
 		for (int i = 0; i < products.size(); i++) {
 			p = products.get(i);
@@ -26,6 +24,7 @@ public class Storage implements ProductDAO {
 		}
 		return null;
 	}
+
 	@Override
 	public String getProductsString() {
 		Product p = null;
@@ -34,8 +33,29 @@ public class Storage implements ProductDAO {
 			p = products.get(i);
 			String col1 = p.getCode();
 			String col2 = p.getDescription();
-			s = s + col1 + col2 + p.getFormattedPrice();
+			s = s + "CODE: " + col1 + " DESCRIPTION: " + col2 + " PRICE: " + p.getFormattedPrice() + "\n";
 		}
-		return s;	
+		return s;
+	}
+
+	@Override
+	public boolean addProduct(Product p) {
+		products.add(p);
+		// getProduct(p);
+		return true;
+	}
+
+	@Override
+	public boolean deleteProduct(Product p) {
+		products.remove(p);
+		return true;
+	}
+
+	@Override
+	public boolean updateProduct(Product p) {
+		int i = products.indexOf(p);
+		products.remove(i);
+		products.add(i, p);
+		return true;
 	}
 }
