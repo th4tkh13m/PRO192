@@ -5,4 +5,27 @@ Explain step by step what happened when the program runs and answer some questio
 - You explain the polymorphism feature in your code.
 - Describe the difference between an interface and an abstract class.
 
-The Organization class is abstract because there 
+Stack: methods
+Heap Classes
+The Organization class is abstract because it can be considered as the basic structure to implement other Organizations.
+Becase both the Colony and University communicate and therefore they must using something to communicate
+The polymorphism feature: 
+-	communicateBytool() 
+-	toString()
+Differences between an interface and an abstract class.
+
+Abstract class:
+Abstract class can have abstract and non-abstract methods.
+Abstract class doesn't support multiple inheritance.
+Abstract class can provide the implementation of interface.
+An abstract class can extend another Java class and implement multiple Java interfaces.
+An abstract class can be extended using keyword "extends".
+A Java abstract class can have class members like private, protected, etc.
+
+Interface:
+Interface can have only abstract methods. Since Java 8, it can have default and static methods also.
+Interface can't provide the implementation of abstract class.
+The interface keyword is used to declare interface.
+An interface can extend another Java interface only.
+An interface can be implemented using keyword "implements".
+Members of a Java interface are public by default.
