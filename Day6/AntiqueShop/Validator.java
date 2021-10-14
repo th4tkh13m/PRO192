@@ -6,7 +6,6 @@ public class Validator {
     public static String getString(Scanner sc, String prompt) {
         System.out.println(prompt);
         String s = sc.nextLine();
-        sc.nextLine();
         return s;
     }
 
