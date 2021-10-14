@@ -29,12 +29,18 @@ public class Course implements Comparable<Course>{
     public void setCredit(int credit) {
         this.credit = credit;
     }
-    @Override
-    public boolean equals(Object obj) {
-    }
+	public Course createCourse() {
+		System.out.println("Enter course ID:");
+		// id = sys
+		return null;
+	}
     @Override
     public int compareTo(Course o) {
         return o.courseName.compareTo(this.courseName);
     }
+	@Override
+	public String toString() {
+		return "Course{courseName=" + courseName + ", credit=" + credit + ", id=" + id + "}";
+	}
     
 }
