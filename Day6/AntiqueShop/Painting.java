@@ -51,16 +51,9 @@ public class Painting extends Item{
     public void inputPainting() {
         input();
         Scanner sc = new Scanner(System.in);
-        System.out.println("Input Height: " + height);
-        height = sc.nextInt();
-        sc.nextLine();
-        System.out.println("Input Width: " + width);
-        width = sc.nextInt();
-        sc.nextLine();
-        System.out.println("Input isWaterColor: " + isWaterColor);
-        isWaterColor = sc.nextBoolean();
-        System.out.println("Input isFrame: " + isFrame);
-        isFrame = sc.nextBoolean();
-        // sc.close();
+        height = Validator.getInt(sc, "Input Height: ");
+        width = Validator.getInt(sc, "Input Width: ");
+        isWaterColor = Validator.getBoolean(sc, "Input isWaterColor: ");
+        isFrame = Validator.getBoolean(sc, "Input isFrame: ");
     }
 }

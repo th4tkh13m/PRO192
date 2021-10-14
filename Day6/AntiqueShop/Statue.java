@@ -33,10 +33,8 @@ public class Statue extends Item{
     public void inputStatue() {
         input();
         Scanner sc = new Scanner(System.in);
-        System.out.println("Input Color: " + color);
-        color = sc.nextLine();
-        System.out.println("Input Weight: " + weight);
-        weight = sc.nextInt();
+        color = Validator.getString(sc, "Input color: ");
+        weight = Validator.getInt(sc, "Input weight: ");
         // sc.close();
     }
 }
