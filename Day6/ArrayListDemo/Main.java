@@ -20,21 +20,38 @@ public class Main {
        nameList.add("Jeff Bezos");
        nameList.add("This has more elements than the above array.");
 
+       System.out.println();
        System.out.println("FORI");
        for (int i = 0; i < nameList.size(); i++) {
            System.out.println(nameList.get(i));
        }
 
+       System.out.println();
        System.out.println("FORE");
        for (String name : nameList) {
            System.out.println(name);
        }
-
+       System.out.println();
        System.out.println("Iterator");
        Iterator<String> iter = nameList.iterator();
        while (iter.hasNext()) {
            System.out.println(iter.next());
        }
+
+       System.out.println();
+       System.out.println("Updating: ");
+       nameList.set(3, "Elon Musk");
+       for (String name : nameList) {
+           System.out.println(name);
+       }
+       
+       System.out.println();
+       System.out.println("Deleting: ");
+       nameList.remove("Elon Musk");
+       for (String name : nameList) {
+           System.out.println(name);
+       }
+       
    } 
    
 }

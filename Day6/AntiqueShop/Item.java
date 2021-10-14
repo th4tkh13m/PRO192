@@ -32,10 +32,8 @@ public class Item {
 
     public void input() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Enter Creator:");
-        creator = sc.nextLine();
-        System.out.println("Enter value:");
-        value = sc.nextInt();
+        creator = Validator.getString(sc, "Input creator: ");
+        value = Validator.getInt(sc, "Input value: ");
 
     }
 
