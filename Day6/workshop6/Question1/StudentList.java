@@ -1,6 +1,7 @@
 package workshop6.Question1;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class StudentList {
@@ -55,6 +56,7 @@ public class StudentList {
                     System.out.println(student);
                 }
             }
+			Collections.sort(findNameList);
         } else {
             System.out.println("There is no student!");
         }
