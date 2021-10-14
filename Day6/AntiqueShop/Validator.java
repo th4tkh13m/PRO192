@@ -18,17 +18,28 @@ public class Validator {
             try {
                 num = sc.nextInt();
                 isValid = true;
-            }
-            catch (Exception NumberFormatException) {
+            } catch (Exception NumberFormatException) {
                 System.out.println("Invalid integer. Please try again.");
                 sc.nextLine();
             }
         } while (!isValid);
         return num;
     }
-    
+
     public static boolean getBoolean(Scanner sc, String prompt) {
-        
-        
+        boolean isValid = false;
+        boolean choice = true;
+        do {
+            System.out.println(prompt);
+            try {
+                choice = sc.nextBoolean();
+                isValid = true;
+            } catch (Exception NumberFormatException) {
+                System.out.println("Invalid value. Please try again.");
+                sc.nextLine();
+            }
+        } while (!isValid);
+        return choice;
+
     }
 }
