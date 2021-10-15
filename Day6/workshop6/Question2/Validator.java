@@ -1,5 +1,6 @@
 package workshop6.Question2;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -8,6 +9,7 @@ import java.util.Scanner;
 public class Validator {
 
 	private static Scanner in = new Scanner(System.in);
+
 	public static String inputString() {
 		while (true) {
 			String input = in.nextLine();
@@ -26,11 +28,34 @@ public class Validator {
 					return input;
 				}
 				System.out.println("Invalid integer.");
-			}
-			catch (Exception InputMismatchException) {
+			} catch (Exception InputMismatchException) {
 				System.out.println("You did not enter an integer!");
 				in.nextLine();
 			}
 		}
+	}
+
+	public static boolean inputYN() {
+		while (true) {
+			System.out.println("Enter y/Y or n/N.");
+			String input = Validator.inputString();
+			if (input.equalsIgnoreCase("Y")) {
+				return true;
+			}
+			else if (input.equalsIgnoreCase("N")) {
+				return false;
+			}
+			else System.out.println("Invalid input. Try again.");
+		}
+	}
+
+	public static ArrayList<Integer> checkCourseID(ArrayList<Course> courseList, String id) {
+		ArrayList<Integer> idList = new ArrayList<>();
+		for (Course course : courseList) {
+			if (course.getId().equals(id)) {
+				idList.add(courseList.indexOf(course));
+			}
+		}
+		return idList;
 	}
 }

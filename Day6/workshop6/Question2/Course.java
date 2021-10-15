@@ -31,8 +31,13 @@ public class Course implements Comparable<Course>{
     }
 	public Course createCourse() {
 		System.out.println("Enter course ID:");
-		// id = sys
-		return null;
+		id = Validator.inputString();
+		System.out.println("Enter course's name:");
+		courseName = Validator.inputString();
+		System.out.println("Enter number of credit:");
+		credit = Validator.inputIntLimit(1, 5);
+		Course course = new Course(id, courseName, credit);
+		return course;
 	}
     @Override
     public int compareTo(Course o) {
