@@ -52,6 +52,14 @@ public class Book {
 		this.price = price;
 	}
 
+	public Book createBook() {
+		System.out.println("Enter id");
+		id = Validator.inputIntLimit(0, 1000);
+		System.out.println("Enter title");
+		title = Validator.inputString();
+		System.out.println();
+	}
+
 	@Override
 	public String toString() {
 		return "Book{author=" + author + ", id=" + id + ", price=" + price + ", title=" + title + "}";

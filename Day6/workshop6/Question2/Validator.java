@@ -49,13 +49,12 @@ public class Validator {
 		}
 	}
 
-	public static ArrayList<Integer> checkCourseID(ArrayList<Course> courseList, String id) {
-		ArrayList<Integer> idList = new ArrayList<>();
+	public static int checkCourseID(ArrayList<Course> courseList, String id) {
 		for (Course course : courseList) {
 			if (course.getId().equals(id)) {
-				idList.add(courseList.indexOf(course));
+				return courseList.indexOf(course);
 			}
 		}
-		return idList;
+		return -1;
 	}
 }

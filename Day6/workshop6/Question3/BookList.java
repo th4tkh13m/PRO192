@@ -14,4 +14,12 @@ public class BookList {
 	public BookList() {
 	}
 
+	public void addBook() {
+		while (true) {
+			Book book = new Book().
+			
+		}
+		
+	}
+
 }

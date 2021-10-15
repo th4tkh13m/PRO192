@@ -6,7 +6,34 @@ package workshop6.Question2;
 public class Main {
 
 	public static void main(String[] args) {
-		int i = Validator.inputIntLimit(1, 5);
-		System.out.println(i);
+		int choice;
+		CourseList courseList = new CourseList();
+		while (true) {
+			choice = Menu.menu();
+
+			switch (choice) {
+				case 1:
+					courseList.listAll();
+					break;
+				case 2:
+					courseList.search();
+					break;
+				case 3:
+					courseList.add();
+					break;
+				case 4:
+					courseList.sort();
+					break;
+				case 5:
+					courseList.update();
+					break;
+				case 0:
+					return;
+				default:
+					System.out.println("Invalid choice");
+					break;
+			}
+		}
+
 	}
 }
