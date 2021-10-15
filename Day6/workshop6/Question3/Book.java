@@ -57,7 +57,11 @@ public class Book {
 		id = Validator.inputIntLimit(0, 1000);
 		System.out.println("Enter title");
 		title = Validator.inputString();
-		System.out.println();
+		System.out.println("Enter author");
+		author = Validator.inputString();
+		System.out.println("Enter price");
+		price = Validator.inputIntLimit(0, 1000);
+		return new Book(id, title, author, price);
 	}
 
 	@Override
