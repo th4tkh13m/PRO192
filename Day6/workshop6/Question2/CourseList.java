@@ -2,7 +2,6 @@ package workshop6.Question2;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 
 /**
  * CourseList

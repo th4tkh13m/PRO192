@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class Menu {
 
 	Scanner sc = new Scanner(System.in);
-	public int menu() {
+	public static int menu() {
 		System.out.println("Menu");
 		System.out.println("1. Add");
 		System.out.println("2. Display");
@@ -16,7 +16,7 @@ public class Menu {
 		System.out.println("4. Delete");
 		System.out.println("5. Exit");
 		System.out.println("Please enter your choice");
-		int choice = Validator.inputInt();
+		int choice = Validator.inputIntLimit(1, 5);
 		return choice;
 	}
 }
