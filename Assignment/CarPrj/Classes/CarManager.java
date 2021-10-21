@@ -1,4 +1,4 @@
-package Assignment.CarPrj.Classes;
+package Classes;
 
 /**
  * CarManager

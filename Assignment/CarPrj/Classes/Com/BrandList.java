@@ -1,4 +1,4 @@
-package Assignment.CarPrj.Classes.Com;
+package Classes.Com;
 
 import java.util.ArrayList;
 
