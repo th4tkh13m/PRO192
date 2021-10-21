@@ -1,4 +1,4 @@
-package Slide17;
+package Slide27;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -6,15 +6,12 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.Scanner;
-import java.util.StringTokenizer;
 
-public class EmployeeList extends ArrayList<Employee> {
+public class ItemList extends ArrayList<Item>{
     Scanner sc = new Scanner(System.in);
 
-    public EmployeeList() {
+    public ItemList() {
     }
 
     public void addFromFile(String fname) {
@@ -28,15 +25,14 @@ public class EmployeeList extends ArrayList<Employee> {
             }
             FileReader fileReader = new FileReader(file);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
-            String content;
-            while ((content = bufferedReader.readLine()) != null) {
-                StringTokenizer tokenizer = new StringTokenizer(content, ",");
-                String code = tokenizer.nextToken();
-                String name = tokenizer.nextToken();
-                int salary = Integer.parseInt(tokenizer.nextToken());
-
-                Employee employee = new Employee(code, name, salary);
-                this.add(employee);
+            String code, name, priceString;
+            int price;
+            while ((code = bufferedReader.readLine()) != null &&
+                    (name = bufferedReader.readLine()) != null &&
+                    (priceString = bufferedReader.readLine()) != null) {
+                price = Integer.parseInt(priceString);
+                Item Item = new Item(code, name, price);
+                this.add(Item);
             }
             bufferedReader.close();
             fileReader.close();
@@ -47,15 +43,16 @@ public class EmployeeList extends ArrayList<Employee> {
 
     public void saveToFile(String fname) {
         if (this.size() == 0) {
-            System.out.println("No employee");
+            System.out.println("No Item");
             return;
         }
         try {
             File file = new File(fname);
             FileWriter fileWriter = new FileWriter(file);
             PrintWriter printWriter = new PrintWriter(fileWriter);
-            for (Employee employee : this) {
-                printWriter.println(employee.getCode() + "," + employee.getName() + "," + employee.getSalary());
+            for (Item Item : this) {
+                printWriter.println(Item.getCode() + "\n" + Item.getName() + "\n" + Item.getPrice());
+                printWriter.flush();
             }
             printWriter.close();
             fileWriter.close();
@@ -68,26 +65,26 @@ public class EmployeeList extends ArrayList<Employee> {
 
 
     private int findCode(String code) {
-        for (Employee employee : this) {
-            if (employee.getCode().equals(code)) {
-                return this.indexOf(employee);
+        for (Item Item : this) {
+            if (Item.getCode().equals(code)) {
+                return this.indexOf(Item);
             }
         }
         return -1;
     }
 
 
-    public void addEmployee() {
+    public void addItem() {
         String code, name;
-        int  salary;
+        int  price;
         int index;
         boolean valid = true;
         System.out.println("Enter information");
         do {
-            System.out.println("Enter code (Eddd) (d stands for digit)");
+            System.out.println("Enter code (Iddd) (d stands for digit)");
             code = sc.nextLine().toUpperCase();
             index = findCode(code);
-            valid = code.matches("^E\\d{3}$");
+            valid = code.matches("^I\\d{3}$");
             if (index >= 0) {
                 System.out.println("Duplicated code");
             }
@@ -97,18 +94,18 @@ public class EmployeeList extends ArrayList<Employee> {
         } while (index >= 0 || (!valid));
         System.out.println("Enter name:");
         name = sc.nextLine();
-        System.out.println("Enter salary");
-        salary = Integer.parseInt(sc.nextLine());
-        this.add(new Employee(code, name, salary));
+        System.out.println("Enter price");
+        price = Integer.parseInt(sc.nextLine());
+        this.add(new Item(code, name, price));
         System.out.println("Add succesfully");
     }
-    public void removeEmployee() {
+    public void removeItem() {
         String code;
         System.out.println("Enter the code you want to remove");
         boolean valid = true;
         code = sc.nextLine().toUpperCase();
         do {
-            valid = code.matches("^E\\d{3}$");
+            valid = code.matches("^I\\d{3}$");
         } while (!valid);
         int index = findCode(code);
         if (index >= 0) {
@@ -119,23 +116,23 @@ public class EmployeeList extends ArrayList<Employee> {
         }
     }
 
-    public void promote() {
+    public void updatePrice() {
         String code;
-        System.out.println("Enter the code of promoted employee: ");
+        System.out.println("Enter the code of promoted Item: ");
         code = sc.nextLine().toUpperCase();
         int index = findCode(code);
         if (index < 0) {
-            System.out.println("No such employee");
+            System.out.println("No such Item");
         }
         else {
-            System.out.println("Old salary: " + this.get(index).getSalary());
-            int newSalary;
+            System.out.println("Old price: " + this.get(index).getPrice());
+            int newprice;
             do {
-                System.out.println("Enter new salary (must be greater than old one)");
-                newSalary = Integer.parseInt(sc.nextLine());
-            } while (newSalary <= this.get(index).getSalary());
-            this.get(index).setSalary(newSalary);
-            System.out.println("Salary has been set to " + newSalary);
+                System.out.println("Enter new price (must be greater than old one)");
+                newprice = Integer.parseInt(sc.nextLine());
+            } while (newprice <= this.get(index).getPrice());
+            this.get(index).setPrice(newprice);
+            System.out.println("price has been set to " + newprice);
         }
     }
 
@@ -144,10 +141,9 @@ public class EmployeeList extends ArrayList<Employee> {
             System.out.println("Empty");
             return;
         }
-        Collections.sort(this);
-        System.out.println("Employee list");
-        for (Employee employee : this) {
-            employee.print();
+        System.out.println("Item list");
+        for (Item Item : this) {
+            Item.print();
         }
     }
 }

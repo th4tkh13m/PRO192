@@ -10,7 +10,7 @@ public class Employee implements Comparable<Employee>{
         this.salary = salary;
     }
     public void print() {
-        System.out.println("CODE" + code);
+        System.out.println("CODE: " + code);
         System.out.println("NAME: " + name);
         System.out.println("SALARY: " + salary);
     }
