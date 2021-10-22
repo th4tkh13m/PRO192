@@ -68,12 +68,13 @@ public class BrandList extends ArrayList<Brand> {
 			PrintWriter printWriter = new PrintWriter(fileWriter);
 
 			for (Brand brand : this) {
-				printWriter.println(brand.getBrandId() + "," + brand.getBrandName() + "," + brand.getSoundBrand() + "," + brand.getPrice());
+				printWriter.println(brand.getBrandId() + "," + brand.getBrandName() + "," + brand.getSoundBrand() + ","
+						+ brand.getPrice());
 			}
 
 			printWriter.close();
 			fileWriter.close();
-			
+
 		} catch (Exception e) {
 			System.out.println(e);
 		}
@@ -94,7 +95,62 @@ public class BrandList extends ArrayList<Brand> {
 	}
 
 	public void addBrand() {
-		
+		String brandId;
+
+		System.out.println("Please enter a Brand ID: ");
+		brandId = Validator.inputString();
+
+		if (searchID(brandId) != -1) {
+			System.out.println("Brand ID cannot be duplicated!");
+			return;
+		}
+
+		System.out.println("Please enter a Brand Name: ");
+		String brandName = Validator.inputString();
+
+		System.out.println("Please enter a Brand' sound Manufacturer: ");
+		String soundBrand = Validator.inputString();
+
+		System.out.println("Please enter the Brand's price: ");
+		double price = Validator.inputDouble();
+
+		Brand brand = new Brand(brandId, brandName, soundBrand, price);
+		this.add(brand);
+	}
+
+	public void updateBrand() {
+		if (this.isEmpty()) {
+			System.out.println("No Brand!");
+			return;
+		}
+
+		System.out.println("Please enter a Brand ID");
+		String brandId = Validator.inputString();
+
+		int index = searchID(brandId);
+		if (index == -1) {
+			System.out.println("Not found!");
+		} else {
+
+			System.out.println("Please enter a Brand Name: ");
+			String brandName = Validator.inputString();
+
+			System.out.println("Please enter a Brand' sound Manufacturer: ");
+			String soundBrand = Validator.inputString();
+
+			System.out.println("Please enter the Brand's price: ");
+			double price = Validator.inputDouble();
+
+			Brand brand = new Brand(brandId, brandName, soundBrand, price);
+			this.set(index, brand);
+		}
+
+	}
+
+	public void listBrands() {
+		for (Brand brand : this) {
+			System.out.println(brand);
+		}
 	}
 
 }
