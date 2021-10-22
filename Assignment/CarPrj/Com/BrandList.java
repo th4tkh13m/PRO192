@@ -80,4 +80,21 @@ public class BrandList extends ArrayList<Brand> {
 		return true;
 	}
 
+	public int searchID(String brandId) {
+		for (int index = 0; index < this.size(); index++) {
+			if (this.get(index).getBrandId() == brandId) {
+				return index;
+			}
+		}
+		return -1;
+	}
+
+	public Brand getUserChoice() {
+		return null;
+	}
+
+	public void addBrand() {
+		
+	}
+
 }
