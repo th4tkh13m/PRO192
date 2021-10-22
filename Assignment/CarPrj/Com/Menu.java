@@ -13,7 +13,8 @@ public class Menu {
 		for (int index = 0; index < numChoice; index++) {
 			System.out.println(index + 1 + ". " + options.get(index));
 		}
-		System.out.println("Please choose an option from 1 to " + numChoice);
+		// System.out.println("Please choose an option from 1 to " + numChoice);
+		reponse = Validator.inputInt(1, numChoice);
 
 	}
 
