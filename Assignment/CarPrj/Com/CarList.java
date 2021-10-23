@@ -124,7 +124,7 @@ public class CarList extends ArrayList<Car> {
 			return;
 		}
 
-		Menu menu = new Menu();
+		Menu<Brand> menu = new Menu<Brand>();
 		Brand brand = menu.ref_getChoice(brandList);
 
 		System.out.println("Please enter a color: ");
@@ -171,7 +171,7 @@ public class CarList extends ArrayList<Car> {
 			System.out.println("Not found!");
 			return false;
 		} else {
-			Menu menu = new Menu();
+			Menu<Brand> menu = new Menu<Brand>();
 			Brand brand = menu.ref_getChoice(brandList);
 
 			System.out.println("Please enter a color: ");

@@ -15,6 +15,6 @@ public class CarManager {
 		carList.loadFromFile("cars.txt");
 
 		int choice;
-		Menu menu = new Menu();
+		Menu<String> menu = new Menu<String>();
 	}
 }

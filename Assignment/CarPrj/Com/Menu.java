@@ -5,9 +5,9 @@ import java.util.ArrayList;
 /**
  * Menu
  */
-public class Menu {
+public class Menu<E> {
 
-	public int int_getChoice(ArrayList<Brand> options) {
+	public int int_getChoice(ArrayList<E> options) {
 		int reponse;
 		int numChoice = options.size();
 		for (int index = 0; index < numChoice; index++) {
@@ -17,7 +17,7 @@ public class Menu {
 		return reponse;
 	}
 
-	public Brand ref_getChoice(ArrayList<Brand> options) {
+	public E ref_getChoice(ArrayList<E> options) {
 		int reponse;
 		int numChoice = options.size();
 		do {
