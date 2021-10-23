@@ -32,16 +32,16 @@ public class BrandList extends ArrayList<Brand> {
 			FileReader fileReader = new FileReader(file);
 			BufferedReader bufferedReader = new BufferedReader(fileReader);
 			String line;
-
+	
 			// Extract data
 			while ((line = bufferedReader.readLine()) != null) {
 				StringTokenizer tokenizer = new StringTokenizer(line, ",");
-				String brandId = tokenizer.nextToken();
-				String brandName = tokenizer.nextToken();
-				String soundAndPrice = tokenizer.nextToken();
+				String brandId = tokenizer.nextToken().strip();
+				String brandName = tokenizer.nextToken().strip();
+				String soundAndPrice = tokenizer.nextToken().strip();
 				tokenizer = new StringTokenizer(soundAndPrice, ":");
-				String soundBrand = tokenizer.nextToken();
-				int price = Integer.parseInt(tokenizer.nextToken());
+				String soundBrand = tokenizer.nextToken().strip();
+				Double price = Double.parseDouble(tokenizer.nextToken());
 
 				Brand brand = new Brand(brandId, brandName, soundBrand, price);
 				this.add(brand);
@@ -68,7 +68,7 @@ public class BrandList extends ArrayList<Brand> {
 			PrintWriter printWriter = new PrintWriter(fileWriter);
 
 			for (Brand brand : this) {
-				printWriter.println(brand.getBrandId() + "," + brand.getBrandName() + "," + brand.getSoundBrand() + ","
+				printWriter.println(brand.getBrandId() + ", " + brand.getBrandName() + ", " + brand.getSoundBrand() + ": "
 						+ brand.getPrice());
 			}
 
@@ -83,7 +83,7 @@ public class BrandList extends ArrayList<Brand> {
 
 	public int searchID(String brandId) {
 		for (int index = 0; index < this.size(); index++) {
-			if (this.get(index).getBrandId() == brandId) {
+			if (this.get(index).getBrandId().equals(brandId)) {
 				return index;
 			}
 		}
@@ -149,6 +149,9 @@ public class BrandList extends ArrayList<Brand> {
 	}
 
 	public void listBrands() {
+		if (this.isEmpty()) {
+			System.out.println("There is no Brand");
+		}
 		for (Brand brand : this) {
 			System.out.println(brand);
 		}

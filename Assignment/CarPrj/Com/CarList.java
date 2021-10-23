@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.StringTokenizer;
 
 /**
@@ -38,12 +39,12 @@ public class CarList extends ArrayList<Car> {
 
 			// Extract data
 			while ((line = bufferedReader.readLine()) != null) {
-				StringTokenizer tokenizer = new StringTokenizer(line, ",");
-				String carID = tokenizer.nextToken();
-				String brandId = tokenizer.nextToken();
-				String color = tokenizer.nextToken();
-				String frameID = tokenizer.nextToken();
-				String engineID = tokenizer.nextToken();
+				StringTokenizer tokenizer = new StringTokenizer(line, ", ");
+				String carID = tokenizer.nextToken().strip();
+				String brandId = tokenizer.nextToken().strip();
+				String color = tokenizer.nextToken().strip();
+				String frameID = tokenizer.nextToken().strip();
+				String engineID = tokenizer.nextToken().strip();
 
 				int index = brandList.searchID(brandId);
 				Brand brand = brandList.get(index);
@@ -64,7 +65,7 @@ public class CarList extends ArrayList<Car> {
 
 	public boolean saveToFile(String fname) {
 		if (this.size() == 0) {
-			System.out.println("Empty Brand");
+			System.out.println("There is no car");
 			return false;
 		}
 		try {
@@ -73,8 +74,8 @@ public class CarList extends ArrayList<Car> {
 			PrintWriter printWriter = new PrintWriter(fileWriter);
 
 			for (Car car : this) {
-				printWriter.println(car.getCarId() + "," + car.getBrand().getBrandId() + "," + car.getColor() + ","
-						+ car.getFrameID() + "," + car.getEngineID());
+				printWriter.println(car.getCarId() + ", " + car.getBrand().getBrandId() + ", " + car.getColor() + ", "
+						+ car.getFrameID() + ", " + car.getEngineID());
 			}
 
 			printWriter.close();
@@ -88,7 +89,7 @@ public class CarList extends ArrayList<Car> {
 
 	public int searchID(String carID) {
 		for (int index = 0; index < this.size(); index++) {
-			if (this.get(index).getCarId() == carID) {
+			if (this.get(index).getCarId().equals(carID)) {
 				return index;
 			}
 		}
@@ -137,6 +138,23 @@ public class CarList extends ArrayList<Car> {
 		this.add(car);
 	}
 
+	public void printBasedBrandName() {
+		System.out.println("Please enter a part of brand name:");
+		String brandNamePartial = Validator.inputString();
+		int count = 0;
+
+		for (Car car : this) {
+			if (car.getBrand().getBrandName().contains(brandNamePartial)) {
+				System.out.println(car.screenString());
+				count = count + 1;
+			}
+		}
+
+		if (count == 0) {
+			System.out.println("No car is detected!");
+		}
+	}
+
 	public boolean removeCar() {
 		if (this.isEmpty()) {
 			System.out.println("There is no car to remove!");
@@ -157,7 +175,7 @@ public class CarList extends ArrayList<Car> {
 		return true;
 	}
 
-	public boolean updateBrand() {
+	public boolean updateCar() {
 		if (this.isEmpty()) {
 			System.out.println("There is no car to update!");
 			return false;
@@ -188,6 +206,11 @@ public class CarList extends ArrayList<Car> {
 	}
 
 	public void listCars() {
+		if (this.isEmpty()) {
+			System.out.println("There is no car.");
+			return;
+		}
+		Collections.sort(this);
 		for (Car car : this) {
 			System.out.println(car.screenString());
 		}

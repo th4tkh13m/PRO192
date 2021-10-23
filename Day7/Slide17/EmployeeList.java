@@ -6,7 +6,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Scanner;
 import java.util.StringTokenizer;
@@ -30,7 +29,7 @@ public class EmployeeList extends ArrayList<Employee> {
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             String content;
             while ((content = bufferedReader.readLine()) != null) {
-                StringTokenizer tokenizer = new StringTokenizer(content, ",");
+                StringTokenizer tokenizer = new StringTokenizer(content, ", ");
                 String code = tokenizer.nextToken();
                 String name = tokenizer.nextToken();
                 int salary = Integer.parseInt(tokenizer.nextToken());
@@ -55,7 +54,7 @@ public class EmployeeList extends ArrayList<Employee> {
             FileWriter fileWriter = new FileWriter(file);
             PrintWriter printWriter = new PrintWriter(fileWriter);
             for (Employee employee : this) {
-                printWriter.println(employee.getCode() + "," + employee.getName() + "," + employee.getSalary());
+                printWriter.println(employee.getCode() + ", " + employee.getName() + ", " + employee.getSalary());
             }
             printWriter.close();
             fileWriter.close();
