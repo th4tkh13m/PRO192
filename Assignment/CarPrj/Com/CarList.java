@@ -98,7 +98,7 @@ public class CarList extends ArrayList<Car> {
 
 	public int searchFrame(String frameID) {
 		for (int index = 0; index < this.size(); index++) {
-			if (this.get(index).getFrameID() == frameID) {
+			if (this.get(index).getFrameID().equals(frameID)) {
 				return index;
 			}
 		}
@@ -107,7 +107,7 @@ public class CarList extends ArrayList<Car> {
 
 	public int searchEngine(String engineID) {
 		for (int index = 0; index < this.size(); index++) {
-			if (this.get(index).getEngineID() == engineID) {
+			if (this.get(index).getEngineID().equals(engineID)) {
 				return index;
 			}
 		}
@@ -148,7 +148,7 @@ public class CarList extends ArrayList<Car> {
 			}
 			System.out.println("Duplicate Engine ID! Try again.");
 		} while (true); 
-		
+
 		Car car = new Car(carID, brand, color, frameID, engineID);
 		this.add(car);
 	}
@@ -212,12 +212,28 @@ public class CarList extends ArrayList<Car> {
 
 			System.out.println("Please enter a color: ");
 			String color = Validator.inputString();
-
-			String frameID = Validator.inputFrame();
-			String engineID = Validator.inputEngine();
+			String frameID;
+			String engineID;
+			
+			do {
+				frameID = Validator.inputFrame();
+				if (searchFrame(frameID) != -1 && !this.get(index).getFrameID().equals(frameID)) {
+					System.out.println("FrameID cannot be duplicated!");
+					continue;
+				}
+				break;
+			} while (true);
+			
+			do {
+				engineID = Validator.inputEngine();
+				if (searchEngine(engineID) != -1 && !this.get(index).getEngineID().equals(engineID)) {
+					System.out.println("EngineID cannot be duplicated!");
+					continue;
+				}
+				break;
+			} while (true);
 
 			Car car = new Car(carID, brand, color, frameID, engineID);
-
 			this.set(index, car);
 		}
 		return true;

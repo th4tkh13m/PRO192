@@ -74,11 +74,11 @@ public class Validator {
 		String input;
 		while (true) {
 			try {
-				System.out.println("Please enter Frame ID. It must be in the format 'F000' and cannot be duplicated");
+				System.out.println("Please enter Frame ID. It must be in the format 'F00000' and cannot be duplicated");
 				input = inputString();
 				
 				if (!input.matches("^F\\d{5}$")) {
-					System.out.println("Please enter a String of 'F000'");
+					System.out.println("Please enter a String of 'F00000'");
 					throw new Exception();
 				}
 
@@ -93,11 +93,11 @@ public class Validator {
 		String input;
 		while (true) {
 			try {
-				System.out.println("Please enter Engine ID. It must be in the format 'E000' and cannot be duplicated");
+				System.out.println("Please enter Engine ID. It must be in the format 'E00000' and cannot be duplicated");
 				input = inputString();
 				
 				if (!input.matches("^E\\d{5}$")) {
-					System.out.println("Please enter a String of 'E000'");
+					System.out.println("Please enter a String of 'E00000'");
 					throw new Exception();
 				}
 
