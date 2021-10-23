@@ -41,48 +41,50 @@ public class CarManager {
 			choice = menu.int_getChoice(optionsList);
 
 			switch (choice) {
-				case 1:
-					brandList.listBrands();
-					break;
-				case 2:
-					brandList.addBrand();
-					break;
-				case 3:
-					String brandId = Validator.inputString();
-					int index = brandList.searchID(brandId);
-					if (index == -1) {
-						System.out.println("Not Found");
-					}
-					else {
-						System.out.println(brandList.get(index));
-					}
-					break;
-				case 4:
-					brandList.updateBrand();
-					break;
-				case 5: 
-					brandList.saveToFile("brands.txt");
-					break;
-				case 6:
-					carList.listCars();
-					break;
-				case 7:
-					carList.printBasedBrandName();
-					break;
-				case 8:
-					carList.addCar();
-					break;
-				case 9:
-					carList.removeCar();
-					break;
-				case 10:
-					carList.updateCar();
-					break;
-				case 11:
-					carList.saveToFile("cars.txt");
-					break;
-				case 12:
-					return;
+			case 1:
+				brandList.listBrands();
+				break;
+			case 2:
+				brandList.addBrand();
+				break;
+			case 3:
+				String brandId = Validator.inputString();
+				int index = brandList.searchID(brandId);
+				if (index == -1) {
+					System.out.println("Not Found");
+				} else {
+					System.out.println(brandList.get(index));
+				}
+				break;
+			case 4:
+				brandList.updateBrand();
+
+				// Do a car brand update.
+				carList.updateCarBrand();
+				break;
+			case 5:
+				brandList.saveToFile("brands.txt");
+				break;
+			case 6:
+				carList.listCars();
+				break;
+			case 7:
+				carList.printBasedBrandName();
+				break;
+			case 8:
+				carList.addCar();
+				break;
+			case 9:
+				carList.removeCar();
+				break;
+			case 10:
+				carList.updateCar();
+				break;
+			case 11:
+				carList.saveToFile("cars.txt");
+				break;
+			case 12:
+				return;
 			}
 		} while (choice != 12);
 	}

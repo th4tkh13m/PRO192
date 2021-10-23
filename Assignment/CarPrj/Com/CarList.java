@@ -115,6 +115,7 @@ public class CarList extends ArrayList<Car> {
 	}
 
 	public void addCar() {
+		System.out.println("------ADD CAR------");
 		String carID;
 
 		System.out.println("Please enter a Car ID: ");
@@ -130,15 +131,30 @@ public class CarList extends ArrayList<Car> {
 
 		System.out.println("Please enter a color: ");
 		String color = Validator.inputString();
+		String frameID;
+		do {
+			frameID = Validator.inputFrame();
+			if (searchFrame(frameID) == -1) {
+				break;
+			}
+			System.out.println("Duplicate Frame ID! Try again.");
+		} while (true);
 
-		String frameID = Validator.inputFrame();
-		String engineID = Validator.inputEngine();
-
+		String engineID;
+		do {
+			engineID = Validator.inputEngine();
+			if (searchEngine(engineID) == -1) {
+				break;
+			}
+			System.out.println("Duplicate Engine ID! Try again.");
+		} while (true); 
+		
 		Car car = new Car(carID, brand, color, frameID, engineID);
 		this.add(car);
 	}
 
 	public void printBasedBrandName() {
+		System.out.println("------PRINT BASED ON BRAND NAME------");
 		System.out.println("Please enter a part of brand name:");
 		String brandNamePartial = Validator.inputString();
 		int count = 0;
@@ -156,6 +172,7 @@ public class CarList extends ArrayList<Car> {
 	}
 
 	public boolean removeCar() {
+		System.out.println("------REMOVE CAR------");
 		if (this.isEmpty()) {
 			System.out.println("There is no car to remove!");
 			return false;
@@ -176,6 +193,7 @@ public class CarList extends ArrayList<Car> {
 	}
 
 	public boolean updateCar() {
+		System.out.println("------UPDATE CAR------");
 		if (this.isEmpty()) {
 			System.out.println("There is no car to update!");
 			return false;
@@ -206,6 +224,7 @@ public class CarList extends ArrayList<Car> {
 	}
 
 	public void listCars() {
+		System.out.println("------LIST CAR------");
 		if (this.isEmpty()) {
 			System.out.println("There is no car.");
 			return;
@@ -213,6 +232,20 @@ public class CarList extends ArrayList<Car> {
 		Collections.sort(this);
 		for (Car car : this) {
 			System.out.println(car.screenString());
+		}
+	}
+
+	// Use to update the car brand based on brand ID when using brandList.updateBrand()
+	// As the car brand is parameterized at the beginning of the program.
+	public void updateCarBrand() {
+		if (this.isEmpty()) {
+			return;
+		}
+		for (Car car : this) {
+			String brandId = car.getBrand().getBrandId();
+			int index = brandList.searchID(brandId);
+			Brand brand = brandList.get(index);
+			car.setBrand(brand);
 		}
 	}
 }

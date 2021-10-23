@@ -32,7 +32,7 @@ public class BrandList extends ArrayList<Brand> {
 			FileReader fileReader = new FileReader(file);
 			BufferedReader bufferedReader = new BufferedReader(fileReader);
 			String line;
-	
+
 			// Extract data
 			while ((line = bufferedReader.readLine()) != null) {
 				StringTokenizer tokenizer = new StringTokenizer(line, ",");
@@ -68,8 +68,8 @@ public class BrandList extends ArrayList<Brand> {
 			PrintWriter printWriter = new PrintWriter(fileWriter);
 
 			for (Brand brand : this) {
-				printWriter.println(brand.getBrandId() + ", " + brand.getBrandName() + ", " + brand.getSoundBrand() + ": "
-						+ brand.getPrice());
+				printWriter.println(brand.getBrandId() + ", " + brand.getBrandName() + ", " + brand.getSoundBrand()
+						+ ": " + brand.getPrice());
 			}
 
 			printWriter.close();
@@ -78,6 +78,7 @@ public class BrandList extends ArrayList<Brand> {
 		} catch (Exception e) {
 			System.out.println(e);
 		}
+		System.out.println("SAVE FILE SUCCESSFULLY");
 		return true;
 	}
 
@@ -96,6 +97,8 @@ public class BrandList extends ArrayList<Brand> {
 	}
 
 	public void addBrand() {
+
+		System.out.println("------ADD BRAND------");
 		String brandId;
 
 		System.out.println("Please enter a Brand ID: ");
@@ -120,6 +123,8 @@ public class BrandList extends ArrayList<Brand> {
 	}
 
 	public void updateBrand() {
+
+		System.out.println("------UPDATE BRAND------");
 		if (this.isEmpty()) {
 			System.out.println("No Brand!");
 			return;
@@ -152,6 +157,7 @@ public class BrandList extends ArrayList<Brand> {
 		if (this.isEmpty()) {
 			System.out.println("There is no Brand");
 		}
+		System.out.println("------BRAND LIST------");
 		for (Brand brand : this) {
 			System.out.println(brand);
 		}
