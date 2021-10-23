@@ -11,7 +11,7 @@ import java.util.StringTokenizer;
 /**
  * CarList
  */
-public class CarList extends ArrayList<Car>{
+public class CarList extends ArrayList<Car> {
 
 	private BrandList brandList;
 
@@ -73,7 +73,8 @@ public class CarList extends ArrayList<Car>{
 			PrintWriter printWriter = new PrintWriter(fileWriter);
 
 			for (Car car : this) {
-				printWriter.println(car.getCarId() + "," + car.getBrand().getBrandId() + "," + car.getColor() + "," + car.getFrameID() + "," + car.getEngineID());
+				printWriter.println(car.getCarId() + "," + car.getBrand().getBrandId() + "," + car.getColor() + ","
+						+ car.getFrameID() + "," + car.getEngineID());
 			}
 
 			printWriter.close();
@@ -123,51 +124,72 @@ public class CarList extends ArrayList<Car>{
 			return;
 		}
 
-		System.out.println("Please enter a : ");
-		String brandName = Validator.inputString();
+		Menu menu = new Menu();
+		Brand brand = menu.ref_getChoice(brandList);
 
-		System.out.println("Please enter a Brand' sound Manufacturer: ");
-		String soundBrand = Validator.inputString();
+		System.out.println("Please enter a color: ");
+		String color = Validator.inputString();
 
-		System.out.println("Please enter the Brand's price: ");
-		double price = Validator.inputDouble();
+		String frameID = Validator.inputFrame();
+		String engineID = Validator.inputEngine();
 
-		Brand brand = new Brand(brandId, brandName, soundBrand, price);
-		this.add(brand);
+		Car car = new Car(carID, brand, color, frameID, engineID);
+		this.add(car);
 	}
 
-	public void updateBrand() {
+	public boolean removeCar() {
 		if (this.isEmpty()) {
-			System.out.println("No Brand!");
-			return;
+			System.out.println("There is no car to remove!");
+			return false;
 		}
 
-		System.out.println("Please enter a Brand ID");
-		String brandId = Validator.inputString();
+		System.out.println("Please enter a removed ID");
+		String removedID = Validator.inputString();
 
-		int index = searchID(brandId);
+		int index = searchID(removedID);
 		if (index == -1) {
 			System.out.println("Not found!");
+			return false;
 		} else {
+			this.remove(index);
+			System.out.println("Remove ID " + removedID + " successfully!");
+		}
+		return true;
+	}
 
-			System.out.println("Please enter a Brand Name: ");
-			String brandName = Validator.inputString();
-
-			System.out.println("Please enter a Brand' sound Manufacturer: ");
-			String soundBrand = Validator.inputString();
-
-			System.out.println("Please enter the Brand's price: ");
-			double price = Validator.inputDouble();
-
-			Brand brand = new Brand(brandId, brandName, soundBrand, price);
-			this.set(index, brand);
+	public boolean updateBrand() {
+		if (this.isEmpty()) {
+			System.out.println("There is no car to update!");
+			return false;
 		}
 
+		System.out.println("Please enter a Car ID");
+		String carID = Validator.inputString();
+
+		int index = searchID(carID);
+		if (index == -1) {
+			System.out.println("Not found!");
+			return false;
+		} else {
+			Menu menu = new Menu();
+			Brand brand = menu.ref_getChoice(brandList);
+
+			System.out.println("Please enter a color: ");
+			String color = Validator.inputString();
+
+			String frameID = Validator.inputFrame();
+			String engineID = Validator.inputEngine();
+
+			Car car = new Car(carID, brand, color, frameID, engineID);
+
+			this.set(index, car);
+		}
+		return true;
 	}
 
 	public void listCars() {
 		for (Car car : this) {
-			System.out.println(car);
+			System.out.println(car.screenString());
 		}
 	}
 }

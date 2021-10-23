@@ -7,23 +7,22 @@ import java.util.ArrayList;
  */
 public class Menu {
 
-	public static int int_getChoice(ArrayList<E> options) {
+	public int int_getChoice(ArrayList<Brand> options) {
 		int reponse;
 		int numChoice = options.size();
 		for (int index = 0; index < numChoice; index++) {
 			System.out.println(index + 1 + ". " + options.get(index));
 		}
-		// System.out.println("Please choose an option from 1 to " + numChoice);
 		reponse = Validator.inputInt(1, numChoice);
-
+		return reponse;
 	}
 
-	public static E ref_getChoice(ArrayList<E> options) {
+	public Brand ref_getChoice(ArrayList<Brand> options) {
 		int reponse;
 		int numChoice = options.size();
 		do {
 			reponse = int_getChoice(options);
 		} while (reponse < 0 || reponse > numChoice);
+		return options.get(reponse - 1);
 	}
-
 }

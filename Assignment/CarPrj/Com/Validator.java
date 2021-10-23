@@ -18,6 +18,7 @@ public class Validator {
 
 				// Handle integer's range
 				if (input < min || input > max) {
+					System.out.println("Please enter a number within the range");
 					throw new Exception();
 				}
 
@@ -37,6 +38,7 @@ public class Validator {
 
 				// Handle a negative real number
 				if (input <= 0) {
+					System.out.println("Please enter a positive number");
 					throw new Exception();
 				}
 
@@ -68,7 +70,41 @@ public class Validator {
 		}
 	}
 
-	// public  name() {
-		
+	public static String inputFrame() {
+		String input;
+		while (true) {
+			try {
+				System.out.println("Please enter Frame ID. It must be in the format 'F000' and cannot be duplicated");
+				input = inputString();
+				
+				if (input.matches("^F\\d{4}$")) {
+					System.out.println("Please enter a String of 'F000'");
+					throw new Exception();
+				}
+
+				return input;
+			} catch (Exception e) {
+				System.out.println("Invalid value. Try again");
+			}
+		}
+	}
+
+	public static String inputEngine() {
+		String input;
+		while (true) {
+			try {
+				System.out.println("Please enter Engine ID. It must be in the format 'E000' and cannot be duplicated");
+				input = inputString();
+				
+				if (input.matches("^E\\d{4}$")) {
+					System.out.println("Please enter a String of 'E000'");
+					throw new Exception();
+				}
+
+				return input;
+			} catch (Exception e) {
+				System.out.println("Invalid value. Try again");
+			}
+		}
 	}
 }
