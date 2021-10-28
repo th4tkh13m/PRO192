@@ -1,16 +1,18 @@
 package WS8;
 
+import java.time.LocalDate;
+
 public class DomesticTour extends Tour {
     private double tourGuideTip;
 
-    public DomesticTour(String code, String title, double price, String transport, String startDate, String endDate,
+    public DomesticTour(String code, String title, double price, String transport, LocalDate startDate, LocalDate endDate,
             double tourGuideTip) {
         super(code, title, price, transport, startDate, endDate);
         this.tourGuideTip = tourGuideTip;
     }
 
     public int getDateNumber() {
-        return 0;
+		return endDate.getDayOfYear() - startDate.getDayOfYear();
     }
  
     @Override

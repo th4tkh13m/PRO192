@@ -1,13 +1,14 @@
 package WS8;
 
+import java.time.LocalDate;
 
 public abstract class Tour implements ITour {
     protected String code, title;
     protected double price;
     protected String transport;
-    protected String startDate, endDate;
+    protected LocalDate startDate, endDate;
 
-    public Tour(String code, String title, double price, String transport, String startDate, String endDate) {
+    public Tour(String code, String title, double price, String transport, LocalDate startDate, LocalDate endDate) {
         this.code = code;
         this.title = title;
         this.price = price;
@@ -52,19 +53,19 @@ public abstract class Tour implements ITour {
         this.transport = transport;
     }
 
-    public String getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(String startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
-    public String getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(String endDate) {
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 

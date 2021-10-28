@@ -1,10 +1,12 @@
 package WS8;
 
+import java.time.LocalDate;
+
 public class InternationalTour extends Tour {
     private double aviationTax, entryFee;
 
-    public InternationalTour(String code, String title, double price, String transport, String startDate,
-            String endDate, double aviationTax, double entryFee) {
+    public InternationalTour(String code, String title, double price, String transport, LocalDate startDate,
+            LocalDate endDate, double aviationTax, double entryFee) {
         super(code, title, price, transport, startDate, endDate);
         this.aviationTax = aviationTax;
         this.entryFee = entryFee;
