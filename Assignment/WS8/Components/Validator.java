@@ -67,12 +67,27 @@ public class Validator {
 	public static LocalDate inputDate() {
 		while (true) {
 			try {
-				System.out.println("Please input the date: dd-mm-yyyy");
+				System.out.println("Please input the date: yyyy-mm-dd");
 				String input = inputString();
 				LocalDate date = convertDate(input);
 				return date;
 			} catch (Exception e) {
 				System.out.println("Invalid date format or date not exist!");
+			}
+		}
+	}
+
+	public static LocalDate inputEndDate(LocalDate startDate) {
+		while (true) {
+			try {
+				LocalDate endDate = inputDate();
+				if (endDate.compareTo(startDate) < 0) {
+					throw new Exception();
+				}
+				return endDate;
+			}
+			catch (Exception e) {
+				System.out.println("End date must be after start date! Try again.");
 			}
 		}
 	}
@@ -132,6 +147,16 @@ public class Validator {
 
 		return choice;
 		
+	}
+
+	public static int checkSave() {
+		Menu<String> menu = new Menu<>();
+		ArrayList<String> optStrings = new ArrayList<>();
+		optStrings.add("Save to file tours.txt");
+		optStrings.add("Load from file tours.txt");
+		int choice = menu.int_getChoice(optStrings);
+
+		return choice;
 	}
 
 }
