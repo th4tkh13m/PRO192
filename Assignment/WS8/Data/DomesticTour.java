@@ -1,4 +1,4 @@
-package WS8;
+package Data;
 
 import java.time.LocalDate;
 

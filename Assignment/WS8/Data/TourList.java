@@ -1,4 +1,4 @@
-package WS8;
+package Data;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -7,7 +7,10 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.StringTokenizer;
+
+import Components.Validator;
 
 public class TourList extends ArrayList<Tour> {
 
@@ -94,12 +97,23 @@ public class TourList extends ArrayList<Tour> {
 		String code = Validator.validateCode(this);
 		String title = Validator.inputString();
 		double price = Validator.inputDouble();
-		String transport = Validator.inputString();
+		String transport = Validator.inputTransportation();
 		LocalDate startDate = Validator.inputDate();
 		LocalDate endDate = Validator.inputDate();
-		
 
-
+		int choice = Validator.inputTourType();
+		if (choice == 1) {
+			double tourGuideTip = Validator.inputDouble();
+			DomesticTour tour = new DomesticTour(code, title, price, transport, startDate, endDate, tourGuideTip);
+			this.add(tour);
+		} else {
+			double aviationTax = Validator.inputDouble();
+			double entryFee = Validator.inputDouble();
+			InternationalTour tour = new InternationalTour(code, title, price, transport, startDate, endDate,
+					aviationTax, entryFee);
+			this.add(tour);
+		}
+		System.out.println("Add succesfully");
 	}
 
 	public void printDomesticTours() {
@@ -149,5 +163,49 @@ public class TourList extends ArrayList<Tour> {
 		}
 	}
 
+	public void updateTour() {
+		if (this.isEmpty()) {
+			System.out.println("No Tour");
+			return;
+		}
+		String code = Validator.inputString();
+		int index = Validator.searchCode(this, code);
+		if (index != -1) {
+			String title = Validator.inputString();
+			double price = Validator.inputDouble();
+			String transport = Validator.inputTransportation();
+			LocalDate startDate = Validator.inputDate();
+			LocalDate endDate = Validator.inputDate();
+
+			int choice = Validator.inputTourType();
+			if (choice == 1) {
+				double tourGuideTip = Validator.inputDouble();
+				DomesticTour tour = new DomesticTour(code, title, price, transport, startDate, endDate, tourGuideTip);
+				this.set(index, tour);
+			} else {
+				double aviationTax = Validator.inputDouble();
+				double entryFee = Validator.inputDouble();
+				InternationalTour tour = new InternationalTour(code, title, price, transport, startDate, endDate,
+						aviationTax, entryFee);
+				this.set(index, tour);
+			}
+			System.out.println("Update succesfully");
+		} else {
+			System.out.println("Not found");
+		}
+	}
+
+	public void listSort() {
+		int choice = Validator.inputSort();
+		if (choice == 1) {
+			Collections.sort(this, new SortByPrice());
+		} else {
+			Collections.sort(this, new SortByTitle());
+			Collections.reverse(this);
+		}
+		for (Tour tour : this) {
+			System.out.println(tour);
+		}
+	}
 
 }

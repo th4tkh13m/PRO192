@@ -1,7 +1,11 @@
-package WS8;
+package Components;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Scanner;
+
+import Data.Tour;
+import Data.TourList;
 
 /**
  * Validator
@@ -21,6 +25,21 @@ public class Validator {
 				return input;
 			} catch (Exception e) {
 				System.out.println("You entered an empty String. Try again");
+			}
+		}
+	}
+
+	public static int inputIntRange(int min, int max) {
+		while (true) {
+			try {
+				System.out.println("Please enter a number in range [" + min + ", " + max + "]");
+				int input = Integer.parseInt(scanner.nextLine());
+				if ((input < min) || (input > max)) {
+					throw new Exception();
+				}
+				return input;
+			} catch (Exception e) {
+				System.out.println("Value out of bound. Please try again");
 			}
 		}
 	}
@@ -80,6 +99,39 @@ public class Validator {
 				System.out.println("This code existed!");
 			}
 		}
+	}
+
+	public static int inputTourType() {
+		Menu<String> menu = new Menu<>();
+		ArrayList<String> optionsList = new ArrayList<>();
+		optionsList.add("DomesticTour");
+		optionsList.add("InternationalTour");
+		int choice = menu.int_getChoice(optionsList);
+
+		return choice;
+	}
+
+	public static String inputTransportation() {
+		Menu<String> menu = new Menu<>();
+		ArrayList<String> optionsList = new ArrayList<>();
+		optionsList.add("Airplane");
+		optionsList.add("Ship");
+		optionsList.add("Car");
+		optionsList.add("Train");
+		String choice = menu.ref_getChoice(optionsList);
+
+		return choice;
+	}
+
+	public static int inputSort() {
+		Menu<String> menu = new Menu<>();
+		ArrayList<String> optionsList = new ArrayList<>();
+		optionsList.add("Descending sort of tour's price");
+		optionsList.add("Ascending sort of tour's title");
+		int choice = menu.int_getChoice(optionsList);
+
+		return choice;
+		
 	}
 
 }

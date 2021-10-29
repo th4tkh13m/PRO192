@@ -1,4 +1,4 @@
-package WS8;
+package Data;
 
 public interface ITour {
     double calculateCharge();
