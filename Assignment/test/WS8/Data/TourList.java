@@ -157,8 +157,8 @@ public class TourList extends ArrayList<Tour> {
 			System.out.println("No Tour");
 			return;
 		}
-		Tour minTour = this.get(0);
-		double minChargeTour = minTour.calculateCharge();
+		double minChargeTour = this.get(0).calculateCharge();
+		Tour minTour = null;
 		for (Tour tour : this) {
 			if (tour.calculateCharge() < minChargeTour) {
 				minChargeTour = tour.calculateCharge();
