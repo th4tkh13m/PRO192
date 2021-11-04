@@ -95,19 +95,27 @@ public class TourList extends ArrayList<Tour> {
 
 	public void addTour() {
 		String code = Validator.validateCode(this);
+		System.out.println("Please enter tour's title");
 		String title = Validator.inputString();
+		System.out.println("Please enter tour's price");
 		double price = Validator.inputDouble();
+		System.out.println("Please choose tour's transport");
 		String transport = Validator.inputTransportation();
+		System.out.println("Please enter start date");
 		LocalDate startDate = Validator.inputDate();
-		LocalDate endDate = Validator.inputDate();
+		System.out.println("Please enter end date");
+		LocalDate endDate = Validator.inputEndDate(startDate);
 
 		int choice = Validator.inputTourType();
 		if (choice == 1) {
+			System.out.println("Please enter tour guide tip");
 			double tourGuideTip = Validator.inputDouble();
 			DomesticTour tour = new DomesticTour(code, title, price, transport, startDate, endDate, tourGuideTip);
 			this.add(tour);
 		} else {
+			System.out.println("Please enter aviation tax");
 			double aviationTax = Validator.inputDouble();
+			System.out.println("Please enter entry fee");
 			double entryFee = Validator.inputDouble();
 			InternationalTour tour = new InternationalTour(code, title, price, transport, startDate, endDate,
 					aviationTax, entryFee);
@@ -117,6 +125,10 @@ public class TourList extends ArrayList<Tour> {
 	}
 
 	public void printDomesticTours() {
+		if (this.isEmpty()) {
+			System.out.println("No Tour");
+			return;
+		}
 		for (Tour tour : this) {
 			if (tour instanceof DomesticTour) {
 				System.out.println(tour);
@@ -124,7 +136,11 @@ public class TourList extends ArrayList<Tour> {
 		}
 	}
 
-	public double averageInternationalCharge() {
+	public void averageInternationalCharge() {
+		if (this.isEmpty()) {
+			System.out.println("No Tour");
+			return;
+		}
 		double total = 0;
 		int count = 0;
 		for (Tour tour : this) {
@@ -133,19 +149,23 @@ public class TourList extends ArrayList<Tour> {
 				count++;
 			}
 		}
-		return total / count;
+		System.out.println("Average International charge: " + total / count);
 	}
 
 	public void searchMinimumChargeTour() {
-		double minChargeTour = this.get(0).calculateCharge();
-		Tour minTour = null;
+		if (this.isEmpty()) {
+			System.out.println("No Tour");
+			return;
+		}
+		Tour minTour = this.get(0);
+		double minChargeTour = minTour.calculateCharge();
 		for (Tour tour : this) {
 			if (tour.calculateCharge() < minChargeTour) {
 				minChargeTour = tour.calculateCharge();
 				minTour = tour;
 			}
 		}
-		System.out.println("Minimum charge tour is " + minTour);
+		System.out.println("Minimum charge tour is " + minTour + "\nwith min charge is " + minChargeTour);
 
 	}
 
@@ -171,19 +191,27 @@ public class TourList extends ArrayList<Tour> {
 		String code = Validator.inputString();
 		int index = Validator.searchCode(this, code);
 		if (index != -1) {
+			System.out.println("Please enter tour's title");
 			String title = Validator.inputString();
+			System.out.println("Please enter tour's price");
 			double price = Validator.inputDouble();
+			System.out.println("Please choose tour's transport");
 			String transport = Validator.inputTransportation();
+			System.out.println("Please enter start date");
 			LocalDate startDate = Validator.inputDate();
-			LocalDate endDate = Validator.inputDate();
+			System.out.println("Please enter end date");
+			LocalDate endDate = Validator.inputEndDate(startDate);
 
 			int choice = Validator.inputTourType();
 			if (choice == 1) {
+				System.out.println("Please enter tour guide tip");
 				double tourGuideTip = Validator.inputDouble();
 				DomesticTour tour = new DomesticTour(code, title, price, transport, startDate, endDate, tourGuideTip);
 				this.set(index, tour);
 			} else {
+				System.out.println("Please enter aviation tax");
 				double aviationTax = Validator.inputDouble();
+				System.out.println("Please enter entry fee");
 				double entryFee = Validator.inputDouble();
 				InternationalTour tour = new InternationalTour(code, title, price, transport, startDate, endDate,
 						aviationTax, entryFee);
@@ -196,12 +224,16 @@ public class TourList extends ArrayList<Tour> {
 	}
 
 	public void listSort() {
+		if (this.isEmpty()) {
+			System.out.println("No Tour");
+			return;
+		}
 		int choice = Validator.inputSort();
 		if (choice == 1) {
 			Collections.sort(this, new SortByPrice());
+			Collections.reverse(this);
 		} else {
 			Collections.sort(this, new SortByTitle());
-			Collections.reverse(this);
 		}
 		for (Tour tour : this) {
 			System.out.println(tour);

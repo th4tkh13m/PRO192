@@ -1,6 +1,7 @@
 package Data;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 public class DomesticTour extends Tour {
     private double tourGuideTip;
@@ -11,8 +12,8 @@ public class DomesticTour extends Tour {
         this.tourGuideTip = tourGuideTip;
     }
 
-    public int getDateNumber() {
-		return endDate.getDayOfYear() - startDate.getDayOfYear();
+    public long getDateNumber() {
+		return ChronoUnit.DAYS.between(startDate, endDate);
     }
  
     @Override

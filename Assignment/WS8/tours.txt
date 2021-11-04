@@ -1,0 +1,4 @@
+International,002,USA,300.0,Airplane,2022-01-02,2022-02-02,30.0,50.0
+International,004,Cambodia,150.0,Airplane,2021-11-05,2021-11-15,20.0,30.0
+Domestic,001,Ha Noi,120.0,Airplane,2021-05-15,2021-05-18,15.0
+Domestic,000,Da Nang,60.0,Car,2021-10-30,2021-11-15,10.0

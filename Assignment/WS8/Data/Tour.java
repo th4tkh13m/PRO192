@@ -20,7 +20,7 @@ public abstract class Tour implements ITour {
     public double calculateSurcharge() {
         return 0;
     }
-    
+
     public String getCode() {
         return code;
     }
@@ -71,9 +71,8 @@ public abstract class Tour implements ITour {
 
     @Override
     public String toString() {
-        return "Tour [endDate=" + endDate + ", code=" + code + ", price=" + price + ", startDate=" + startDate
-                + ", title=" + title + ", transport=" + transport + "]";
+        return "Tour [code=" + code + ", title=" + title + ", price=" + price + ", transport=" + transport
+                + ", startDate=" + startDate + ", endDate=" + endDate + "]";
     }
-
 
 }
